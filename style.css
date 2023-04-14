@@ -1,0 +1,77 @@
+/* * {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500 !important;
+    scroll-behavior: smooth;
+}
+
+.navbar {
+    background-color: transparent;
+    transition: all .3s;
+    z-index: 999;
+}
+
+.navbar .navbar-toggler {
+    outline: none;
+}
+
+.navbar .navbar-brand {
+    font-family: 'Viga';
+    font-size: 30px;
+}
+
+.navbar .navbar-nav .nav-link {
+    text-transform: uppercase;
+    margin-left: 25px;
+    color: #fff;
+}
+
+.navbar .navbar-nav {
+    background-color: #86C6F4;
+    border-radius: 5px !important;
+    padding: 10px;
+} */
+
+/* body {
+    margin: 0;
+    background: #ecf3f3;
+} */
+
+.home {
+    background-color: #0d6efd;
+    background-size: cover;
+    width: 100%;
+    min-height: 100vh;
+    background-position: bottom;
+}
+
+.home {
+    padding-top: 150px;
+}
+
+.home h1 {
+    color: #fff;
+    font-weight: 700;
+    font-size: 54px;
+}
+
+.home p {
+    font-family: 'Times New Roman', Times, serif;
+    color: rgba(255, 255, 255, .8);
+    font-size: 20px;
+}
+
+
+.card {
+    transition: all 0.5s ease-in-out;
+}
+
+.card:hover {
+    background-color: #0d6efd;
+    transform: scale(1.1);
+}
