@@ -28,18 +28,22 @@
         <div class="mx-auto"></div>
         <ul class="navbar-nav">
           <li class="nav-item">
-              <a class="nav-link text-white" href="/">Homepage</a>
+            <a class="nav-link text-white" href="/">Homepage</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link text-white" href="#repo">Repository</a>
+            <a class="nav-link text-white" href="#repo">Repository</a>
           </li>
-            <li class="nav-item">
-                <a class="nav-link text-white" href="#ip">IP</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white" href="#ssh">SSH</a>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#ip">IP</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#ssh">SSH</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#dns">DNS</a>
+          </li>
         </ul>
-    </div>
+      </div>
     </div>
   </nav>
 
@@ -93,7 +97,8 @@
       <p class="card-text">Buka control panel pada windows -> network and internet -> network and sharing center ->
         change adapter settings dan cari virtualbox host-only</p>
       <img src="img/cpadapter.png" alt="" style="padding-bottom: 5px;">
-      <p class="card-text">Kemudian klik kanan -> properties -> ipv4, rubah ip address berbeda dengan ip debian tetapi tetap satu network dan preferred
+      <p class="card-text">Kemudian klik kanan -> properties -> ipv4, rubah ip address berbeda dengan ip debian tetapi
+        tetap satu network dan preferred
         DNS server menyesuaikan dengan ip debian</p>
       <img src="img/cpip.png" alt="">
     </div>
@@ -107,17 +112,19 @@
       <h5 class="card-title">1. Masuk ke file config ssh</h5>
       <p class="card-text">Run command “nano /etc/ssh/sshd_config”</p>
       <h5 class="card-title">2. Ubah port shh</h5>
-      <p class="card-text">hapus tanda # yang ada di depan port dan ganti port sesuai keinginan, sebagai contoh disini menggunakan port 13</p>
+      <p class="card-text">hapus tanda # yang ada di depan port dan ganti port sesuai keinginan, sebagai contoh disini
+        menggunakan port 13</p>
       <img src="img/port.png" alt="" style="padding-bottom: 5px;">
       <h5 class="card-title">3. Ubah PermitRootLogin agar bisa login root di SSH</h5>
-      <p class="card-text">hapus tanda # yang ada di depan PermitRootLogin dan hapus prohibit-password kemudian ganti dengan yes</p>
+      <p class="card-text">hapus tanda # yang ada di depan PermitRootLogin dan hapus prohibit-password kemudian ganti
+        dengan yes</p>
       <img src="img/rootlog.png" alt="" style="padding-bottom: 5px;">
       <h5 class="card-title">4. Restart service SSH</h5>
       <p class="card-text">Run command “systemctl restart ssh”</p>
     </div>
   </div>
   <!-- dns -->
-  <div class="card text-bg-primary mb-3" style="margin-left: 10px; margin-right: 10px; margin-top: 30px;" id="ssh">
+  <div class="card text-bg-primary mb-3" style="margin-left: 10px; margin-right: 10px; margin-top: 30px;" id="dns">
     <h4 class="card-header">
       Konfigurasi DNS
     </h4>
@@ -126,25 +133,34 @@
       <p class="card-text">run command “nano /etc/bind/named.conf.default-zones” </p>
       <img src="img/namedconf.png" alt="" style="padding-bottom: 5px;">
       <div class="card-text">
-        <p>cut pada bagian diatas, dengan menggunakan ctrl+k sebanyak sembilan kali kemudian ctrl+u sebanyak dua kali</p>
-        <p>rubah localhost menyesuaikan dengan DNS yang akan dipakai, sebagai contoh saya menggunakan mokletxt1.edu, dan db.local menyesuaikan keinginan, sebagai contoh saya menggunakan db.mokletxt1</p>
-        <p>ubah 127 menyesuaikan dengan oktet ip debian, karena oktet pertama ip saya adalah 192 maka ubah menjadi 192, dan ubah db.192 sesuaikan dengan oktet pertama ip</p>
+        <p>cut pada bagian diatas, dengan menggunakan ctrl+k sebanyak sembilan kali kemudian ctrl+u sebanyak dua kali
+        </p>
+        <p>rubah localhost menyesuaikan dengan DNS yang akan dipakai, sebagai contoh saya menggunakan mokletxt1.edu, dan
+          db.local menyesuaikan keinginan, sebagai contoh saya menggunakan db.mokletxt1</p>
+        <p>ubah 127 menyesuaikan dengan oktet ip debian, karena oktet pertama ip saya adalah 192 maka ubah menjadi 192,
+          dan ubah db.192 sesuaikan dengan oktet pertama ip</p>
       </div>
       <img src="img/afternamedconf.png" alt="">
       <h5 class="card-title">2. Copy file db.local dan db.172</h5>
       <div class="card-text">
-        <p>Run command "cp /etc/bind/db.local /etc/bind/db.mokletxt1" (untuk dbmokletxt1 menyesuaikan dengan yang telah dikonfigurasi pada file /etc/bind/named.conf.default-zones)</p>
-        <p>Run command "cp /etc/bind/db.172 /etc/bind/db.192" (untuk dbmokletxt1 menyesuaikan dengan yang telah dikonfigurasi pada file /etc/bind/named.conf.default-zones)</p>
+        <p>Run command "cp /etc/bind/db.local /etc/bind/db.mokletxt1" (untuk dbmokletxt1 menyesuaikan dengan yang telah
+          dikonfigurasi pada file /etc/bind/named.conf.default-zones)</p>
+        <p>Run command "cp /etc/bind/db.172 /etc/bind/db.192" (untuk dbmokletxt1 menyesuaikan dengan yang telah
+          dikonfigurasi pada file /etc/bind/named.conf.default-zones)</p>
       </div>
       <h5 class="card-title">3. Konfigurasi file yang dicopy tadi</h5>
-      <p class="card-text">Run command “nano /etc/bind/db.mokletxt1” kemudian ganti kata kata ”localhost” menjadi ”mokletxt1.edu" kemudian rubah ip menjadi 192.168.1.13 dan hapus baris paling bawah</p>
+      <p class="card-text">Run command “nano /etc/bind/db.mokletxt1” kemudian ganti kata kata ”localhost” menjadi
+        ”mokletxt1.edu" kemudian rubah ip menjadi 192.168.1.13 dan hapus baris paling bawah</p>
       <img src="img/dbmoklet.png" alt="">
-      <p class="card-text">Run command “nano /etc/bind/db.192” lalu ganti “localhost” menjadi “moklet.edu” dan rubah ip menjadi ip debian yang dibalik tanpa oktet pertama, karena ip debian saya 192.168.1.13 menjadi 13.1.168</p>
+      <p class="card-text">Run command “nano /etc/bind/db.192” lalu ganti “localhost” menjadi “moklet.edu” dan rubah ip
+        menjadi ip debian yang dibalik tanpa oktet pertama, karena ip debian saya 192.168.1.13 menjadi 13.1.168</p>
       <img src="img/db192.png" alt="">
       <h5 class="card-title">4. Konfigurasi file resolv.conf</h5>
-      <p class="card-text">Run command “nano /etc/resolv.conf” dan tambahakan “nameserver 192.168.1.13” dibagian teratas</p>
+      <p class="card-text">Run command “nano /etc/resolv.conf” dan tambahakan “nameserver 192.168.1.13” dibagian teratas
+      </p>
       <h5 class="card-title">5. Restart service bind9 dan check DNS</h5>
-      <p class="card-text">Run command “systemctl restart bind9” dan run command “nslookup mokletxt1.edu”(DNS sesuaikan dengan yang sudah di konfigurasi) jika muncul seperti Digambar maka dns sudah berhasil</p>
+      <p class="card-text">Run command “systemctl restart bind9” dan run command “nslookup mokletxt1.edu”(DNS sesuaikan
+        dengan yang sudah di konfigurasi) jika muncul seperti Digambar maka dns sudah berhasil</p>
       <img src="img/nslookup.png" alt="">
     </div>
   </div>
