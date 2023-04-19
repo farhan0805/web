@@ -65,7 +65,7 @@
       <p class="card-text">Run command "nano /etc/aor/sources.list" kemudian tambahkan <a
           href="https://www.linuxsec.org/2020/11/daftar-repository-lokal-indonesia.html" target="_blank"
           style="color:white">repository Indonesia</a> pada baris paling bawah</p>
-      <img src="img/repo.png" alt="" style="padding-bottom: 6px;">
+      <img src="img/repo.png" onclick="onClick(this)" alt="Repository" style="padding-bottom: 6px;" class="img-fluid modal-hover-opacity">
       <h5 class="card-title">2. Run command "apt update" dan "apt upgrade" </h5>
       <h5 class="card-title">3. Kemudian install service yang dibutuhkan sekaligus dengan command ”apt install ssh
         apache2 bind9 proftpd”</h5>
@@ -89,18 +89,20 @@
         </div>
       </div>
       <p class="card-text">Note, untuk ip address bisa menyesuaikan</p>
-      <img src="img/ip.png" alt="" style="padding-top: 10px; padding-bottom: 5px;">
+      <img src="img/ip.png" alt="IP Debian" onclick="onClick(this)" style="padding-top: 10px; padding-bottom: 5px;"
+        class="img-fluid  modal-hover-opacity">
       <h5 class="card-title">2. Ubah network adapter virtualbox</h5>
       <p class="card-text"> Buka machine -> setting -> network dan rubah Attached to menjadi host only adapter</p>
-      <img src="img/adapter.png" alt="" style="padding-bottom: 5px;">
+      <img src="img/adapter.png" alt="Adapter settings" onclick="onClick(this)" style="padding-bottom: 5px;" class="img-fluid  modal-hover-opacity">
       <h5 class="card-title">3. Ganti ip pada windows</h5>
       <p class="card-text">Buka control panel pada windows -> network and internet -> network and sharing center ->
         change adapter settings dan cari virtualbox host-only</p>
-      <img src="img/cpadapter.png" alt="" style="padding-bottom: 5px;">
+      <img src="img/cpadapter.png" alt="Control Panel Adapter" onclick="onClick(this)" style="padding-bottom: 5px;"
+        class="img-fluid modal-hover-opacity">
       <p class="card-text">Kemudian klik kanan -> properties -> ipv4, rubah ip address berbeda dengan ip debian tetapi
         tetap satu network dan preferred
         DNS server menyesuaikan dengan ip debian</p>
-      <img src="img/cpip.png" alt="">
+      <img src="img/cpip.png" alt="Control Panel IP" onclick="onClick(this)" class="img-fluid  modal-hover-opacity">
     </div>
   </div>
   <!-- ssh -->
@@ -114,11 +116,11 @@
       <h5 class="card-title">2. Ubah port shh</h5>
       <p class="card-text">hapus tanda # yang ada di depan port dan ganti port sesuai keinginan, sebagai contoh disini
         menggunakan port 13</p>
-      <img src="img/port.png" alt="" style="padding-bottom: 5px;">
+      <img src="img/port.png" alt="Port" onclick="onClick(this)" style="padding-bottom: 5px;" class="img-fluid  modal-hover-opacity">
       <h5 class="card-title">3. Ubah PermitRootLogin agar bisa login root di SSH</h5>
       <p class="card-text">hapus tanda # yang ada di depan PermitRootLogin dan hapus prohibit-password kemudian ganti
         dengan yes</p>
-      <img src="img/rootlog.png" alt="" style="padding-bottom: 5px;">
+      <img src="img/rootlog.png" alt="PermitRootLogin" onclick="onClick(this)" style="padding-bottom: 5px;" class="img-fluid  modal-hover-opacity">
       <h5 class="card-title">4. Restart service SSH</h5>
       <p class="card-text">Run command “systemctl restart ssh”</p>
     </div>
@@ -131,7 +133,7 @@
     <div class="card-body">
       <h5 class="card-title">1. Ubah isi file named.conf.default-zones</h5>
       <p class="card-text">run command “nano /etc/bind/named.conf.default-zones” </p>
-      <img src="img/namedconf.png" alt="" style="padding-bottom: 5px;">
+      <img src="img/namedconf.png" alt="NamedConf" onclick="onClick(this)" style="padding-bottom: 5px;" class="img-fluid  modal-hover-opacity">
       <div class="card-text">
         <p>cut pada bagian diatas, dengan menggunakan ctrl+k sebanyak sembilan kali kemudian ctrl+u sebanyak dua kali
         </p>
@@ -140,7 +142,7 @@
         <p>ubah 127 menyesuaikan dengan oktet ip debian, karena oktet pertama ip saya adalah 192 maka ubah menjadi 192,
           dan ubah db.192 sesuaikan dengan oktet pertama ip</p>
       </div>
-      <img src="img/afternamedconf.png" alt="">
+      <img src="img/afternamedconf.png" alt="After NamedConf" onclick="onClick(this)" class="img-fluid  modal-hover-opacity">
       <h5 class="card-title">2. Copy file db.local dan db.172</h5>
       <div class="card-text">
         <p>Run command "cp /etc/bind/db.local /etc/bind/db.mokletxt1" (untuk dbmokletxt1 menyesuaikan dengan yang telah
@@ -151,25 +153,32 @@
       <h5 class="card-title">3. Konfigurasi file yang dicopy tadi</h5>
       <p class="card-text">Run command “nano /etc/bind/db.mokletxt1” kemudian ganti kata kata ”localhost” menjadi
         ”mokletxt1.edu" kemudian rubah ip menjadi 192.168.1.13 dan hapus baris paling bawah</p>
-      <img src="img/dbmoklet.png" alt="">
+      <img src="img/dbmoklet.png" alt="db.mokletxt1" onclick="onClick(this)" class="img-fluid modal-hover-opacity">
       <p class="card-text">Run command “nano /etc/bind/db.192” lalu ganti “localhost” menjadi “moklet.edu” dan rubah ip
         menjadi ip debian yang dibalik tanpa oktet pertama, karena ip debian saya 192.168.1.13 menjadi 13.1.168</p>
-      <img src="img/db192.png" alt="">
+      <img src="img/db192.png" onclick="onClick(this)" alt="db192" class="img-fluid modal-hover-opacity">
       <h5 class="card-title">4. Konfigurasi file resolv.conf</h5>
       <p class="card-text">Run command “nano /etc/resolv.conf” dan tambahakan “nameserver 192.168.1.13” dibagian teratas
       </p>
       <h5 class="card-title">5. Restart service bind9 dan check DNS</h5>
       <p class="card-text">Run command “systemctl restart bind9” dan run command “nslookup mokletxt1.edu”(DNS sesuaikan
         dengan yang sudah di konfigurasi) jika muncul seperti Digambar maka dns sudah berhasil</p>
-      <img src="img/nslookup.png" alt="">
+      <img src="img/nslookup.png" onclick="onClick(this)" alt="nslookup" class="img-fluid modal-hover-opacity">
     </div>
-  </div>
-  <!-- script -->
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
-    crossorigin="anonymous"></script>
-  <script src="index.js"></script>
+    <div id="modal01" class="modal" onclick="this.style.display='none'">
+      <span class="close">&times;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <div class="modal-content">
+        <img id="img01" style="max-width:90%">
+      </div>
+    </div>
+
+    <!-- script -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+      crossorigin="anonymous"></script>
+    <script src="index.js"></script>
 </body>
 
 </html>
