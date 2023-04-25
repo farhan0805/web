@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  background-color: #1e293b;
 }
 
 h1 {
@@ -113,4 +114,23 @@ h1 {
   to {
     transform: scale(1)
   }
+}
+
+nav {
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.nav-item {
+  margin-left: 10px;
+}
+
+.nav-item a:hover {
+  color: var(--bs-nav-pills-link-active-color);
+  background-color: var(--bs-nav-pills-link-active-bg);
+  border-radius: var(--bs-nav-pills-border-radius);
+}
+
+.card {
+  background: linear-gradient(to right,#475569, #47556936);
 }
