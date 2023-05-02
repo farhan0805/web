@@ -1,4 +1,3 @@
-console.log("tes")
 
 let nav = document.querySelector('nav');
 
